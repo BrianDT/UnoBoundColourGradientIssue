@@ -1,0 +1,51 @@
+<Page x:Class="UnoBoundColourGradientIssue.MainPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:UnoBoundColourGradientIssue"
+	xmlns:conv="using:UnoBoundColourGradientIssue.Converters"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <conv:ColourConverter x:Key="bodyColourConverter" />
+    </Page.Resources>
+
+
+    <Grid HorizontalAlignment="Center"
+				VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,48,0,12" HorizontalAlignment="Center">
+            <TextBlock Text="The rectangle below should have a colour gradient from almost black to green to almost black" />
+            <TextBlock Text="When flipped with the button beelow the colour chould change to red" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,12,0,12" HorizontalAlignment="Center">
+            <Button Content="Flip" Click="Button_Click"
+                    HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <Canvas Grid.Row="2" >
+            <Rectangle x:Name="Cab" Canvas.Left="150" Canvas.Top="100"
+                           Height="200"
+                           Width="300"
+                           StrokeThickness="2" StrokeLineJoin="Round"
+                           Stroke="#FFDCDCDC" >
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                        <GradientStop Color="{x:Bind VM.ColourIndex, Mode=OneWay, Converter={StaticResource bodyColourConverter}, ConverterParameter=C}" Offset="0"/>
+                        <GradientStop Color="{x:Bind VM.ColourIndex, Mode=OneWay, Converter={StaticResource bodyColourConverter}, ConverterParameter=B}" Offset="0.5"/>
+                        <GradientStop Color="{x:Bind VM.ColourIndex, Mode=OneWay, Converter={StaticResource bodyColourConverter}, ConverterParameter=C}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.RenderTransform>
+                    <RotateTransform CenterX="0" CenterY="0" Angle="0" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+        </Canvas>
+    </Grid>
+</Page>

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+	"UnoBoundColourGradientIssue.Windows (Package)": {
+	  "commandName": "MsixPackage"
+	},
+	"UnoBoundColourGradientIssue.Windows (Unpackaged)": {
+	  "commandName": "Project"
+	}
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "UnoBoundColourGradientIssue",
+  "display": "standalone",
+  "name": "UnoBoundColourGradientIssue",
+  "short_name": "UnoBoundColourGradientIssue",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}
